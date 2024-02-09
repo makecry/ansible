@@ -3,7 +3,7 @@
   gather_facts: False
 
 vars_files:
-    - snmp_vars.yml
+    - snmp-vars.yml
 
 - name: Merge the provided configuration with the existing running configuration
   cisco.nxos.nxos_snmp_server:
