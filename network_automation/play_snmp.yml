@@ -1,0 +1,19 @@
+- name: Config SNMP Nexus OS
+  hosts: NON_OOB_UDC1
+  connection: local
+  gather_facts: False
+
+vars_files:
+    - snmp_vars.yml
+
+- name: Merge the provided configuration with the existing running configuration
+  cisco.nxos.nxos_snmp_server:
+    config:
+      hosts:
+        - host: "{{ host }}"
+          traps: True
+          version: '2c'
+          community: W7ngw4QS
+        - host: "{{ host }}"
+          use_vrf: management
+  with_items: "{{ host_udc1 }}"
